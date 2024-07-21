@@ -37,9 +37,18 @@ class Solution{
     public static int kthSmallest(int[] arr, int l, int r, int k) 
     { 
         //Your code here
-        Arrays.sort(arr, l, r + 1);
-        
-        // Return the k-th smallest element
-        return arr[l + k - 1];
-    } 
+          PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+
+        // Add elements to the max heap
+        for (int i = l; i <= r; i++) {
+            maxHeap.add(arr[i]);
+            // If the heap size exceeds k, remove the largest element
+            if (maxHeap.size() > k) {
+                maxHeap.poll();
+            }
+        }
+
+        // The root of the max heap is the k-th smallest element
+        return maxHeap.peek();
+    }
 }
