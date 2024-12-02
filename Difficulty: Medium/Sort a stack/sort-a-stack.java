@@ -18,7 +18,9 @@ class SortedStack {
                 a.pop();
             }
             System.out.println();
-        }
+        
+System.out.println("~");
+}
     }
 }
 // } Driver Code Ends
@@ -27,38 +29,33 @@ class SortedStack {
 /*Complete the function below*/
 class GfG {
     public Stack<Integer> sort(Stack<Integer> s) {
-        
         // add code here.
-         if (s.isEmpty()) {
-            return s;
+    if (!s.isEmpty()) {
+            // Step 1: Pop the top element
+            int top = s.pop();
+            
+            // Step 2: Recursively sort the remaining stack
+            sort(s);
+            
+            // Step 3: Insert the popped element back in the correct position
+            sortedInsert(s, top);
         }
-
-        // Remove the top element
-        int top = s.pop();
-
-        // Recursively sort the remaining stack
-        sort(s);
-
-        // Insert the removed element back in sorted order
-        sortedInsert(s, top);
-
         return s;
     }
-
-    // Helper method to insert an element into the sorted stack
+    
+    // Helper function to insert an element in a sorted manner
     private void sortedInsert(Stack<Integer> s, int element) {
-        // If stack is empty or the element is greater than or equal to the top element, push it
-        if (s.isEmpty() || element >= s.peek()) {
+        // Base case: If stack is empty or the top element is smaller than the current element
+        if (s.isEmpty() || s.peek() <= element) {
             s.push(element);
-        } else {
-            // Remove the top element
-            int top = s.pop();
-
-            // Recursive call to insert the element in the correct position
-            sortedInsert(s, element);
-
-            // Push the removed element back onto the stack
-            s.push(top);
+            return;
         }
+        
+        // Recursive case: Pop the top element, insert the current element, then push back the popped element
+        int top = s.pop();
+        sortedInsert(s, element);
+        s.push(top);
     }
-    }
+}
+
+    
