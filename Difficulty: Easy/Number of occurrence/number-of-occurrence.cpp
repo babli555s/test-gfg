@@ -10,17 +10,15 @@ class Solution {
   public:
     int countFreq(vector<int>& arr, int target) {
         // code here
-        int cnt=0;
-        for(int i=0;i<arr.size();i++){
+        int n=arr.size();
+        int count=0;
+        for(int i=0;i<n;i++){
             if(arr[i]==target){
-                cnt++;
-       
+                count++;
+            }
         }
-        
-        }
-        return cnt;
-    
-}
+        return count;
+    }
 };
 
 
