@@ -5,35 +5,32 @@ using namespace std;
 
 
 // } Driver Code Ends
+
 class Solution {
   public:
     vector<int> findTwoElement(vector<int>& arr) {
         // code here
+        int missing=-1;
+        int repeating=-1;
         int n=arr.size();
-        
         unordered_map<int,int>mp;
-       int repeat=-1;
-       int missing=-1;
-       for(int i=0;i<n;i++){
-           mp[arr[i]]++;
-       }
-       for(int i=0;i<=n;i++){
-           if(mp[i]==2){
-               repeat=i;
-           }
-           else{
-               if(mp[i]==0){
-                   missing=i;
-               }
-           }
-       }
-       return {repeat,missing};
-       
-         
-        
-        
+        for(int i=0;i<n;i++){
+            mp[arr[i]]++;
+        }
+        for(int i=0;i<=n;i++){
+            if(mp[i]==2){
+                repeating=i;
+            }
+            else{
+                if(mp[i]==0){
+                    missing=i;
+                }
+            }
+        }
+        return {repeating,missing};
     }
 };
+
 
 //{ Driver Code Starts.
 
