@@ -11,8 +11,12 @@ class Solution {
         // code here
         int n=arr.size();
         for(int i=0;i<n/2;i++){
-            swap(arr[i],arr[n-i-1]);
+            int temp=arr[n-i-1];
+            arr[n-i-1]=arr[i];
+            arr[i]=temp;
+            
         }
+    
     }
 };
 
