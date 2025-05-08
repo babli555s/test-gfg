@@ -6,24 +6,24 @@ using namespace std;
 
 
 // } Driver Code Ends
+
 // User function Template for C++
 class Solution {
   public:
     string reverseString(string& s) {
         // code here
-          int n=s.size();
-        int l=0;
-        int h=n-1;
-      
-       while(l<h)
-       {
-           swap(s[l],s[h]);
-           l++;
-           h--;
-       }
-       return s;
+        int n=s.size();
+        int left=0;
+        int right=s.size()-1;
+        while(left<right){
+            swap(s[left],s[right]);
+            left++;
+            right--;
+        }
+        return s;
     }
 };
+
 
 
 //{ Driver Code Starts.
