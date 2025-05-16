@@ -10,26 +10,28 @@ class Solution {
   public:
     vector<int> findTwoElement(vector<int>& arr) {
         // code here
-        int missing=-1;
-        int repeating=-1;
-        int n=arr.size();
-        unordered_map<int,int>mp;
-        for(int i=0;i<n;i++){
-            mp[arr[i]]++;
+         int n = arr.size();
+        unordered_map<int, int> m;
+        int repeating = -1, missing = -1;
+
+        // Count occurrences
+        for (int i = 0; i < n; i++) {
+            m[arr[i]]++;
         }
-        for(int i=0;i<=n;i++){
-            if(mp[i]==2){
-                repeating=i;
-            }
-            else{
-                if(mp[i]==0){
-                    missing=i;
-                }
-            }
+
+        // Find repeating and missing
+        for (int i = 1; i <= n; i++) {
+            if (m[i] == 0)
+                missing = i;
+            else if (m[i] == 2)
+                repeating = i;
         }
-        return {repeating,missing};
+
+        return {repeating, missing};
     }
 };
+
+    
 
 
 //{ Driver Code Starts.
