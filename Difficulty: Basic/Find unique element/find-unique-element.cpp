@@ -4,24 +4,26 @@ using namespace std;
 
 
 // } Driver Code Ends
+
 class Solution {
   public:
     int findUnique(int k, vector<int>& arr) {
         // code here
+        int temp;
         int n=arr.size();
-        unordered_map<int,int>mp;
+        unordered_map<int,int>m;
         for(int i=0;i<n;i++){
-            mp[arr[i]]++;
+            m[arr[i]]++;
         }
-        for(auto &i:mp){
-            if(i.second<k){
-                return i.first;
-                
+        for(auto &c:m){
+            if(c.second<k){
+                temp=c.first;
             }
         }
-        
+        return temp;
     }
 };
+
 
 //{ Driver Code Starts.
 int main() {
